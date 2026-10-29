@@ -126,6 +126,6 @@ Tool support, symbol availability, and recoverable artifacts vary by image. Empt
 
 ## Licensing
 
-External tools, detection rules, and vendored plugins retain their respective licenses. Preserve their notices and review their redistribution terms.
+MemFusion's own application code is MIT licensed, see [LICENSE](LICENSE).
 
-No top-level application license has been selected yet. This README does not grant a license or override third-party terms.
+External tools, detection rules, and vendored plugins retain their respective licenses and are not covered by that grant. This includes everything under `custom_plugins/` and `custom_plugins_vol2/`, and the external tools MemFusion installs and coordinates (Volatility 2, Volatility 3, MemProcFS, MemNixFS, MemProcFS-Analyzer). Preserve their notices and review their redistribution terms.
