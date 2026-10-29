@@ -1,6 +1,6 @@
 # Custom Volatility 3 plugins
 
-> ### ⚠ After upgrading Volatility 3, run `scripts/patch_plugins_for_vol3.py`
+> ### After upgrading Volatility 3, run `scripts/patch_plugins_for_vol3.py`
 >
 > Most of these plugins were written against vol3 ~2.0–2.5. Core plugins get **major** version
 > bumps, and vol3 treats the major component as a hard compatibility barrier — the plugin is then
