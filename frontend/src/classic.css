@@ -1,0 +1,154 @@
+/* Traditional desktop presentation; view IDs and event handlers stay intact. */
+:root[data-theme="classic"] {
+    color-scheme: light;
+    --bg: #e5e5e5;
+    --panel-bg: #f0f0f0;
+    --panel-border: #a5a5a5;
+    --sticky-bg: #e5e5e5;
+    --text: #202020;
+    --text-muted: #383838;
+    --text-dim: #595959;
+    --row-border: #d3d3d3;
+    --row-hover: #e4edf5;
+    --input-bg: #fff;
+    --input-text: #202020;
+    --input-border: #888;
+    --btn-bg: #e6e6e6;
+    --btn-bg-hover: #d8e3ed;
+    --btn-text: #202020;
+    --accent: #315978;
+    --accent-hover: #254761;
+    --accent-text: #fff;
+    --ok: #246333;
+    --err: #a52222;
+    --warn: #805800;
+    --log-bg: #fff;
+    --badge-bg: #e3e3e3;
+    --badge-text: #333;
+    --note-text: #725400;
+    --fw3-bg: #e3e3e3;
+    --fw3-text: #333;
+    --fw2-bg: #e3e3e3;
+    --fw2-text: #333;
+    --focus-ring: #245c89;
+}
+
+html { font-size: 14px; }
+body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.4; }
+.top-bar { padding: 5px 16px; gap: 8px; background: var(--panel-bg); }
+.app-header, #main { max-width: 1160px; }
+.app-header { padding: 14px 16px 4px; }
+.app-header h1 { font-size: 19px; font-weight: 600; }
+.subtitle { font-size: 12px; margin-top: 3px; }
+#main { padding: 10px 16px 20px; gap: 12px; }
+.panel { padding: 12px; }
+.panel h2 { font-size: 15px; padding-bottom: 7px; border-bottom: 1px solid var(--panel-border); margin-bottom: 12px; }
+.field-row { margin-bottom: 10px; }
+.field-row label { margin-bottom: 4px; font-size: 13px; }
+button, input, select { font: inherit; border-radius: 0; }
+.btn-primary, .btn-secondary, .theme-btn, .tab-btn, .chip {
+    border: 1px solid var(--panel-border);
+    min-height: 28px;
+    height: auto;
+    padding: 4px 10px;
+    font-size: 13px;
+    line-height: 1.35;
+}
+.btn-primary { background: var(--btn-bg); color: var(--btn-text); border-color: var(--accent); }
+.btn-primary:hover:not(:disabled) { background: var(--btn-bg-hover); }
+.btn-primary:active:not(:disabled), .btn-secondary:active:not(:disabled) { box-shadow: inset 1px 1px 2px var(--panel-border); }
+.input-with-button input, .input-with-button select, .plugin-toolbar input,
+.filter-bar input[type="search"], .filter-bar select, .pid-input {
+    height: 29px;
+    font-size: 13px;
+    padding: 3px 7px;
+}
+input[type="text"], input[type="number"] {
+    background: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
+    padding: 4px 7px;
+    min-width: 0;
+}
+.input-with-button { gap: 6px; flex-wrap: wrap; }
+.input-with-button input { flex-basis: 240px; }
+.install-box { padding: 10px; margin-bottom: 12px; }
+.install-heading { margin-bottom: 8px; }
+.update-status { background: var(--panel-bg); padding: 6px 8px; }
+.status-row { display: grid; grid-template-columns: 3.5em 170px minmax(0, 1fr); gap: 8px; font-size: 13px; }
+.status-label { min-width: 0; }
+.status-message { overflow-wrap: anywhere; }
+.install-progress-icon { width: auto; min-width: 3em; margin-right: 6px; }
+.section-title, .plugin-group-label { text-transform: none; letter-spacing: normal; font-size: 13px; font-weight: 600; }
+.plugin-list, .result-list, .run-list { background: var(--panel-bg); }
+:root[data-theme="classic"] .update-status,
+:root[data-theme="classic"] .plugin-list,
+:root[data-theme="classic"] .result-list,
+:root[data-theme="classic"] .run-list { background: var(--input-bg); }
+.plugin-row, .run-row, .result-row { padding: 5px 8px; }
+.run-row { grid-template-columns: 3.5em minmax(0, 2fr) minmax(0, 2fr); }
+.plugin-group-label { padding: 6px 8px; }
+.log-pane { font: 12px/1.5 Consolas, "Courier New", monospace; padding: 8px; }
+.activity-box { border-color: var(--panel-border); }
+.progress-track { height: 12px; border: 1px solid var(--panel-border); padding: 1px; }
+.progress-fill { transition: none; }
+.theme-btn.active, .tab-btn.active, .chip.chip-active { font-weight: 600; }
+@media (max-width: 720px) {
+    #main { padding: 8px; }
+    .app-header { padding-left: 8px; }
+    .status-row { grid-template-columns: 3.5em minmax(0, 1fr); }
+    .status-message { grid-column: 2; }
+    .plugin-desc, .run-row-detail { display: block; white-space: normal; grid-column: 2 / -1; }
+    .input-with-button select { min-width: 0; max-width: 100%; }
+}
+
+/* Compact utility layout inspired by traditional forensic desktop tools. */
+.top-bar { justify-content: space-between; flex-wrap: wrap; }
+.workflow-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.workflow-nav button:disabled { opacity: .5; cursor: default; }
+.app-header { padding-top: 8px; }
+.app-header h1 { font-size: 16px; }
+.subtitle { font-size: 12px; }
+.panel { margin-top: 8px; padding: 0 12px 12px; }
+.panel h2 {
+    display: table;
+    position: relative;
+    top: -10px;
+    margin: 0 0 0 0;
+    padding: 0 7px;
+    background: var(--bg);
+    border: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+}
+.field-row {
+    display: grid;
+    grid-template-columns: 165px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 4px;
+    margin-bottom: 7px;
+}
+.field-row > label { margin: 0; font-size: 12px; font-weight: 600; }
+.field-row > .hint { grid-column: 2; font-size: 12px; }
+.field-row .checkbox-row label { font-size: 12px; }
+.input-with-button { gap: 7px; }
+.input-with-button .btn-secondary { min-width: 78px; }
+.section-title { margin: 10px 0 8px; padding-top: 8px; }
+.setup-details { border: 1px solid var(--panel-border); padding: 8px 10px; margin: 12px 0; }
+.setup-details > summary { cursor: pointer; font-weight: 600; }
+.setup-details[open] > summary { margin-bottom: 10px; }
+.setup-details .install-box { border: 0; padding: 0; }
+.install-row { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 10px; }
+.install-row button { width: 100%; }
+.actions { border-top: 1px solid var(--panel-border); padding-top: 10px; }
+:root[data-theme="classic"] { --bg: #f0f0f0; --panel-bg: #f0f0f0; --panel-border: #c6c6c6; --btn-bg: #fafafa; }
+:root[data-theme="classic"] .log-pane { background: #141414; color: #dedede; border-color: #777; }
+.log-pane { min-height: 130px; max-height: 320px; }
+@media (max-width: 720px) {
+    .field-row { grid-template-columns: 1fr; }
+    .field-row > .hint { grid-column: 1; }
+    .install-row { grid-template-columns: 1fr; }
+    .install-row button { width: auto; justify-self: start; }
+}

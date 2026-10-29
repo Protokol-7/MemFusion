@@ -1,0 +1,173 @@
+/*
+ * Design tokens + themes.
+ *
+ * Every colour in the app resolves through a variable defined here. That is
+ * what makes the theme switcher possible at all: before this, the stylesheet
+ * hardcoded rgba(255,255,255,…) in ~60 places, which silently assumes a dark
+ * background and turns invisible on a light one.
+ *
+ * Themes are selected with data-theme on <html>. "midnight" is the original
+ * navy look and stays the default so existing users see no change.
+ */
+
+:root,
+:root[data-theme="midnight"] {
+    --bg: #1b2636;
+    --panel-bg: rgba(255, 255, 255, 0.04);
+    --panel-border: rgba(255, 255, 255, 0.10);
+    --sticky-bg: #1b2636;
+
+    --text: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.78);
+    --text-dim: rgba(255, 255, 255, 0.58);
+
+    --row-border: rgba(255, 255, 255, 0.06);
+    --row-hover: rgba(255, 255, 255, 0.06);
+
+    --input-bg: var(--btn-bg);
+    --input-text: var(--btn-text);
+    --input-border: transparent;
+
+    --btn-bg: rgba(255, 255, 255, 0.14);
+    --btn-bg-hover: rgba(255, 255, 255, 0.24);
+    --btn-text: #ffffff;
+
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-text: #ffffff;
+
+    --ok: #4ade80;
+    --err: #f87171;
+    --warn: #fbbf24;
+
+    --log-bg: rgba(0, 0, 0, 0.28);
+    --badge-bg: rgba(120, 180, 255, 0.18);
+    --badge-text: rgba(170, 210, 255, 0.95);
+    --note-text: #d9c07a;
+    --fw3-bg: rgba(57, 230, 201, 0.18);
+    --fw3-text: #7bf0d7;
+    --fw2-bg: rgba(255, 180, 90, 0.20);
+    --fw2-text: #ffc882;
+    --focus-ring: #7cb0ff;
+}
+
+/* Pure black — for OLED screens and dim rooms. */
+:root[data-theme="dark"] {
+    --bg: #0b0b0d;
+    --panel-bg: rgba(255, 255, 255, 0.035);
+    --panel-border: rgba(255, 255, 255, 0.12);
+    --sticky-bg: #131317;
+
+    --text: #f4f4f6;
+    --text-muted: rgba(244, 244, 246, 0.78);
+    --text-dim: rgba(244, 244, 246, 0.55);
+
+    --row-border: rgba(255, 255, 255, 0.07);
+    --row-hover: rgba(255, 255, 255, 0.07);
+
+    --input-bg: #1e1e24;
+    --input-text: #f4f4f6;
+    --input-border: rgba(255, 255, 255, 0.16);
+
+    --btn-bg: rgba(255, 255, 255, 0.12);
+    --btn-bg-hover: rgba(255, 255, 255, 0.22);
+    --btn-text: #f4f4f6;
+
+    --accent: #4b8dfa;
+    --accent-hover: #3b7bea;
+    --accent-text: #ffffff;
+
+    --ok: #4ade80;
+    --err: #ff8080;
+    --warn: #fbbf24;
+
+    --log-bg: rgba(0, 0, 0, 0.5);
+    --badge-bg: rgba(120, 180, 255, 0.16);
+    --badge-text: #9fc8ff;
+    --note-text: #dcc27f;
+    --fw3-bg: rgba(57, 230, 201, 0.16);
+    --fw3-text: #6fe6cd;
+    --fw2-bg: rgba(255, 180, 90, 0.18);
+    --fw2-text: #ffc175;
+    --focus-ring: #7cb0ff;
+}
+
+/* Light — for bright rooms and projectors. Contrast ratios here are chosen
+   against a white panel, not merely inverted from the dark palette. */
+:root[data-theme="light"] {
+    --bg: #f3f5f8;
+    --panel-bg: #ffffff;
+    --panel-border: #d8dee7;
+    --sticky-bg: #eef1f6;
+
+    --text: #16202e;
+    --text-muted: #3d4a5c;
+    --text-dim: #63718a;
+
+    --row-border: #e6eaf0;
+    --row-hover: #eef3fb;
+
+    --input-bg: #ffffff;
+    --input-text: #16202e;
+    --input-border: #c3ccd9;
+
+    --btn-bg: #e4e9f1;
+    --btn-bg-hover: #d3dbe8;
+    --btn-text: #16202e;
+
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-text: #ffffff;
+
+    --ok: #15803d;
+    --err: #c02626;
+    --warn: #a16207;
+
+    --log-bg: #f2f4f8;
+    --badge-bg: #dce9ff;
+    --badge-text: #1b4fa8;
+    --note-text: #8a6d1f;
+    --fw3-bg: #cdf5ec;
+    --fw3-text: #0f6f5c;
+    --fw2-bg: #ffe6c9;
+    --fw2-text: #96521a;
+    --focus-ring: #2563eb;
+}
+
+/* Base font size raised from the 16px default: this UI is dense with small
+   labels, and at the old scale several were rendering near 10px. */
+html {
+    font-size: 16px;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    line-height: 1.5;
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+}
+
+#app {
+    min-height: 100vh;
+}
+
+/* Visible keyboard focus. The app previously had none, so tabbing through
+   the form gave no indication of position. */
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 0;
+}

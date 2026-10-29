@@ -1,0 +1,42 @@
+# Build output and dependencies
+/build/bin/
+/build/ui-review/
+/build/releases/
+node_modules/
+/frontend/dist/
+/frontend/package.json.md5
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local diagnostics and development downloads
+*.log
+/sigma-wheels/
+/sigma-validation*/
+/sigma-help.txt
+/TODO*.md
+
+# Local credentials and editor files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Evidence and analysis output must stay local
+*.vmem
+*.vmsn
+*.vmss
+*.raw
+*.dmp
+*.mem
+*.lime
+/debug-logs/
+/custody-*/

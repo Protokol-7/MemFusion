@@ -1,0 +1,978 @@
+/* ---------- top bar / header ---------- */
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.theme-switcher-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.theme-btn {
+    border: 1px solid var(--panel-border);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 0;
+    padding: 0.22rem 0.7rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.theme-btn:hover {
+    background: var(--btn-bg-hover);
+}
+
+.theme-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+.app-header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 0.25rem;
+    text-align: left;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.subtitle {
+    margin: 0.2rem 0 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+#main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ---------- panels ---------- */
+
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+    padding: 1.15rem 1.25rem;
+}
+
+.panel-hidden {
+    display: none;
+}
+
+.panel h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+}
+
+/* ---------- form fields ---------- */
+
+.field-row {
+    margin-bottom: 0.9rem;
+}
+
+.field-row label {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-row label {
+    display: inline;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.checkbox-row input[type="checkbox"]:disabled + label {
+    color: var(--text-dim);
+}
+
+.input-with-button input,
+.input-with-button select,
+.plugin-toolbar input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--input-border);
+    border-radius: 0;
+    outline: none;
+    height: 36px;
+    padding: 0 10px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    font-size: 0.95rem;
+}
+
+.input-with-button select {
+    flex: 0 0 auto;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+/* ---------- buttons ---------- */
+
+.btn-secondary, .btn-primary {
+    border: none;
+    border-radius: 0;
+    height: 36px;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    white-space: nowrap;
+}
+
+.btn-secondary {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--btn-bg-hover);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+
+/* Both button kinds now show a disabled state — previously only the primary
+   did, so a disabled secondary looked clickable. */
+.btn-primary:disabled,
+.btn-secondary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.actions {
+    margin-top: 1rem;
+}
+
+.hint {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* ---------- status rows ---------- */
+
+#statusArea {
+    margin-top: 1rem;
+}
+
+.status-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    font-size: 0.95rem;
+}
+
+.status-icon {
+    width: 1.2em;
+    flex: 0 0 auto;
+    font-weight: bold;
+}
+
+.status-ok .status-icon { color: var(--ok); }
+.status-error .status-icon { color: var(--err); }
+.status-empty .status-icon { color: var(--text-dim); }
+
+.status-label {
+    font-weight: 600;
+    /* Widened: "MemProcFS-Analyzer" overflowed the old 100px and pushed the
+       message column out of alignment with the other rows. */
+    min-width: 165px;
+    flex: 0 0 auto;
+}
+
+.status-message {
+    color: var(--text-muted);
+}
+
+.status-ok { color: var(--ok); }
+.status-error { color: var(--err); }
+
+.prereq-block {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--panel-border);
+}
+
+/* ---------- plugin picker ---------- */
+
+.plugin-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+    /* Wraps instead of crushing the search box: the toolbar now carries four
+       buttons plus the count. */
+    flex-wrap: wrap;
+}
+
+.plugin-toolbar input {
+    flex: 1 1 220px;
+}
+
+.selected-count {
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border-left: 1px solid var(--panel-border);
+    border-radius: 0;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.selected-count.is-zero {
+    background: transparent;
+    color: var(--text-dim);
+}
+
+.category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.tab-group-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-right: 0.15rem;
+    min-width: 68px;
+}
+
+.tab-btn {
+    border: 1px solid var(--panel-border);
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 0;
+    padding: 0.28rem 0.85rem;
+    font-size: 0.88rem;
+    cursor: pointer;
+}
+
+.tab-btn:hover {
+    background: var(--row-hover);
+}
+
+.tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+.filter-toggles {
+    margin: 0.5rem 0 0.75rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.filter-toggles .checkbox-row {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ---------- compact filter chrome ---------- */
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.filter-bar input[type="search"] {
+    flex: 1 1 240px;
+    min-width: 0;
+    border: 1px solid var(--input-border);
+    border-radius: 0;
+    outline: none;
+    height: 36px;
+    padding: 0 10px;
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 0.95rem;
+}
+
+.filter-bar select {
+    height: 36px;
+    border-radius: 0;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 0.9rem;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+.filter-sep {
+    width: 1px;
+    align-self: stretch;
+    background: var(--panel-border);
+    margin: 0 0.25rem;
+}
+
+.chip-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.45rem;
+}
+
+.chip-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-right: 0.1rem;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    border: 1px solid var(--panel-border);
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 0;
+    padding: 0.22rem 0.7rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.chip:hover { background: var(--row-hover); }
+
+.chip.chip-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+.chip-count {
+    font-size: 0.78rem;
+    opacity: 0.75;
+    font-variant-numeric: tabular-nums;
+}
+
+.chip.chip-empty { opacity: 0.42; }
+
+/* Reveal chips are off by default and read as "hidden, click to show". */
+.chip-reveal { border-style: dashed; }
+
+.chip-hint {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-left: 0.35rem;
+}
+
+/* Filtering hides rows in place rather than rebuilding the list. */
+.row-hidden { display: none !important; }
+
+/* ---------- progress bar ---------- */
+
+.progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.progress-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 0;
+    background: var(--btn-bg);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.progress-fill.progress-error { background: var(--warn); }
+
+.progress-text {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- results panel ---------- */
+
+.result-list {
+    max-height: 42vh;
+    overflow-y: auto;
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+    margin-top: 0.5rem;
+}
+
+.result-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid var(--row-border);
+    font-size: 0.92rem;
+}
+
+.section-title {
+    margin: 1.25rem 0 0.7rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--row-border);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.result-icon { text-align: center; }
+.result-findings .result-icon { color: var(--ok); }
+.result-error .result-icon { color: var(--err); }
+.result-empty { opacity: 0.62; }
+.result-empty .result-icon { color: var(--text-dim); }
+
+.result-name {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+}
+
+.result-rows {
+    font-variant-numeric: tabular-nums;
+    color: var(--ok);
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.result-detail {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 40ch;
+}
+
+.result-error .result-detail { color: var(--err); }
+
+.plugin-list {
+    /* Viewport-relative so a taller window shows more of a 500-plugin list. */
+    max-height: 46vh;
+    min-height: 180px;
+    overflow-y: auto;
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+}
+
+.plugin-group-label {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--sticky-bg);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--panel-border);
+    /* Now an interactive select-all control, not just a caption. */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.plugin-group-label:hover {
+    background: var(--row-hover);
+}
+
+.plugin-group-label input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.group-count {
+    margin-left: auto;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.78rem;
+    opacity: 0.85;
+}
+
+.select-hint {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+}
+
+.tab-count {
+    opacity: 0.75;
+    font-variant-numeric: tabular-nums;
+}
+
+.tab-btn.tab-empty {
+    opacity: 0.45;
+}
+
+.plugin-row {
+    display: grid;
+    /* The name column gets the larger share: plugin names run to ~45
+       characters (windows.direct_system_calls.DirectSystemCalls) and are the
+       thing being scanned for, whereas the description is supporting detail
+       that can ellipsis away. */
+    grid-template-columns: 22px minmax(0, 1.55fr) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid var(--row-border);
+    cursor: pointer;
+    font-size: 0.92rem;
+}
+
+.plugin-row:hover {
+    background: var(--row-hover);
+}
+
+.plugin-row.plugin-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.plugin-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: inherit;
+}
+
+.plugin-name {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88rem;
+    /* break-word, not anywhere: `anywhere` split names mid-token
+       ("DebugRegis / ters") and turned rows into three-line blocks. */
+    overflow-wrap: break-word;
+}
+
+.plugin-desc {
+    color: var(--text-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.88rem;
+}
+
+.plugin-row.has-middle {
+    grid-template-columns: 22px minmax(0, 1.55fr) auto minmax(0, 1fr);
+}
+
+.plugin-row.plugin-redundant {
+    opacity: 0.7;
+}
+
+.plugin-badge {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.12rem 0.45rem;
+    border-radius: 0;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    white-space: nowrap;
+}
+
+.fw-badge {
+    display: inline-block;
+    min-width: 1.9em;
+    margin-right: 0.45rem;
+    padding: 0.08rem 0.32rem;
+    border-radius: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: 0.03em;
+}
+
+.fw-vol3 { background: var(--fw3-bg); color: var(--fw3-text); }
+.fw-vol2 { background: var(--fw2-bg); color: var(--fw2-text); }
+
+.plugin-note {
+    font-size: 0.75rem;
+    color: var(--note-text);
+    white-space: nowrap;
+    cursor: help;
+}
+
+/* ---------- install box ---------- */
+
+.install-box {
+    padding: 0.85rem;
+    margin-bottom: 1.1rem;
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+    background: transparent;
+}
+
+.install-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.update-status {
+    margin-bottom: 0.75rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--row-border);
+    border-radius: 0;
+}
+
+.update-status .status-row {
+    padding: 0.25rem 0;
+}
+
+.status-update,
+.status-update .status-icon {
+    color: var(--warn);
+}
+
+.targeting-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.7rem 0;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+}
+
+.pid-input {
+    width: 110px;
+    height: 32px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 0;
+    background: var(--input-bg);
+    color: var(--input-text);
+}
+
+.install-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.install-progress {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.install-progress-row {
+    font-size: 0.9rem;
+}
+
+.install-progress-icon {
+    display: inline-block;
+    width: 1.3em;
+}
+
+.install-row-second {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--row-border);
+}
+
+.deps-summary {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.deps-summary p {
+    margin: 0.35rem 0;
+}
+
+.deps-list {
+    margin: 0.2rem 0 0.4rem 1.2rem;
+    padding: 0;
+}
+
+.deps-list li {
+    margin-bottom: 0.25rem;
+}
+
+/* ---------- mounts ---------- */
+
+.mount-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--row-border);
+}
+
+.mount-row-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.mount-row-path {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+.mount-row-detail {
+    font-size: 0.85rem;
+}
+
+/* ---------- run panel ---------- */
+
+.run-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.overall-banner {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+}
+
+/* Live activity: what is running right now, for how long, and the latest
+   line the tool printed. */
+.activity-box {
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    background: var(--panel-bg);
+}
+
+.activity-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.activity-spinner {
+    color: var(--accent);
+    font-size: 1.1rem;
+    width: 1.2em;
+    flex: 0 0 auto;
+}
+
+.activity-what {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.activity-elapsed {
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.activity-detail {
+    margin-top: 0.3rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.log-details {
+    margin-top: 0.75rem;
+}
+
+.log-details summary {
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    user-select: none;
+}
+
+.log-pane {
+    margin-top: 0.5rem;
+    max-height: 240px;
+    overflow-y: auto;
+    background: var(--log-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+    padding: 0.6rem 0.8rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: var(--text-muted);
+}
+
+.tool-status-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+    padding: 0.45rem 0.7rem;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+}
+
+.run-order {
+    margin: -0.2rem 0 0.75rem;
+    color: var(--text-dim);
+    font-size: 0.84rem;
+}
+
+.tool-status-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 130px;
+    flex: 0 0 auto;
+}
+
+.run-list {
+    max-height: 36vh;
+    overflow-y: auto;
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+}
+
+.run-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 2fr) minmax(0, 2fr);
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid var(--row-border);
+    font-size: 0.92rem;
+}
+
+.run-row-icon { text-align: center; }
+.run-row-running { color: var(--text-dim); }
+.run-row-ok { color: var(--ok); }
+.run-row-error { color: var(--err); }
+
+.run-row-name {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+}
+
+.run-row-detail {
+    color: var(--text-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#runFooter {
+    margin-top: 0.75rem;
+}
+
+/* Narrow windows: drop the description column rather than squeezing the
+   plugin name into an unreadable sliver. */
+@media (max-width: 720px) {
+    .plugin-row,
+    .plugin-row.has-middle {
+        grid-template-columns: 22px minmax(0, 1fr);
+    }
+    .plugin-desc,
+    .run-row-detail {
+        display: none;
+    }
+    .status-label {
+        min-width: 110px;
+    }
+    .targeting-box,
+    .install-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+/* Traditional desktop controls and textual status labels. */
+.status-icon, .result-icon { width: auto; min-width: 3em; font-size: 0.8rem; }
+.result-row { grid-template-columns: 4.5rem minmax(0, 1fr) auto; }
+.section-title, .plugin-badge { text-transform: none; letter-spacing: normal; }
+button, input, select { font-family: inherit; }
+
+
+.run-row-icon { width: auto; min-width: 3em; font-size: 0.8rem; }
+

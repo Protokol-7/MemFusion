@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- flat dark tile -->
+  <rect x="64" y="64" width="896" height="896" rx="196" fill="#111c2e"/>
+
+  <!-- memory chip: body + pins, single accent color, flat -->
+  <g fill="none" stroke="#39e6c9" stroke-width="34" stroke-linecap="round">
+    <!-- pins -->
+    <line x1="404" y1="300" x2="404" y2="356"/>
+    <line x1="512" y1="300" x2="512" y2="356"/>
+    <line x1="620" y1="300" x2="620" y2="356"/>
+    <line x1="404" y1="668" x2="404" y2="724"/>
+    <line x1="512" y1="668" x2="512" y2="724"/>
+    <line x1="620" y1="668" x2="620" y2="724"/>
+    <line x1="300" y1="404" x2="356" y2="404"/>
+    <line x1="300" y1="512" x2="356" y2="512"/>
+    <line x1="300" y1="620" x2="356" y2="620"/>
+    <line x1="668" y1="404" x2="724" y2="404"/>
+    <line x1="668" y1="512" x2="724" y2="512"/>
+    <line x1="668" y1="620" x2="724" y2="620"/>
+    <!-- chip body -->
+    <rect x="356" y="356" width="312" height="312" rx="44"/>
+  </g>
+  <!-- inner die -->
+  <rect x="440" y="440" width="144" height="144" rx="24" fill="#39e6c9"/>
+</svg>
